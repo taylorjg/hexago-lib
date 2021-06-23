@@ -7,7 +7,8 @@ export class Card {
   }
 
   public thingAt(slot: number, rotation: Rotation): Thing {
-    const index = (slot - rotation) % this.things.length
+    const numSlots = this.things.length
+    const index = (slot - rotation + numSlots) % numSlots
     return this.things[index]
   }
 

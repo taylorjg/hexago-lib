@@ -1,10 +1,10 @@
 export enum Colour {
-  Colour1,
-  Colour2,
-  Colour3,
-  Colour4,
-  Colour5,
-  Colour6
+  Red,
+  Green,
+  Blue,
+  Yellow,
+  Orange,
+  Purple
 }
 
 export enum HexagoNumber {

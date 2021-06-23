@@ -13,8 +13,12 @@ export class Match {
   ) {
     this.coloursMatch = this.thing1.colour == this.thing2.colour
     this.numbersMatch = this.thing1.number == this.thing2.number
-    const total = this.thing1.number + this.thing2.number
-    const multiplier = this.coloursMatch && this.numbersMatch ? 2 : 1
-    this.score = total * multiplier
+    if (!this.coloursMatch && !this.numbersMatch) {
+      this.score = 0
+    } else {
+      const sum = this.thing1.number + this.thing2.number
+      const double = this.coloursMatch && this.numbersMatch
+      this.score = double ? 2 * sum : sum
+    }
   }
 }

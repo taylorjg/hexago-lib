@@ -3,21 +3,21 @@ import { Colour, HexagoNumber } from './enums'
 import { CardThings, Thing } from './thing'
 
 const card1Things: CardThings = [
-  new Thing(Colour.Colour1, HexagoNumber.Number1),
-  new Thing(Colour.Colour1, HexagoNumber.Number1),
-  new Thing(Colour.Colour1, HexagoNumber.Number1),
-  new Thing(Colour.Colour1, HexagoNumber.Number1),
-  new Thing(Colour.Colour1, HexagoNumber.Number1),
-  new Thing(Colour.Colour1, HexagoNumber.Number1)
+  new Thing(Colour.Red, HexagoNumber.Number1),
+  new Thing(Colour.Red, HexagoNumber.Number1),
+  new Thing(Colour.Red, HexagoNumber.Number1),
+  new Thing(Colour.Red, HexagoNumber.Number1),
+  new Thing(Colour.Red, HexagoNumber.Number1),
+  new Thing(Colour.Red, HexagoNumber.Number1)
 ]
 
 const card2Things: CardThings = [
-  new Thing(Colour.Colour1, HexagoNumber.Number1),
-  new Thing(Colour.Colour1, HexagoNumber.Number1),
-  new Thing(Colour.Colour1, HexagoNumber.Number1),
-  new Thing(Colour.Colour1, HexagoNumber.Number1),
-  new Thing(Colour.Colour1, HexagoNumber.Number1),
-  new Thing(Colour.Colour1, HexagoNumber.Number1)
+  new Thing(Colour.Red, HexagoNumber.Number1),
+  new Thing(Colour.Red, HexagoNumber.Number1),
+  new Thing(Colour.Red, HexagoNumber.Number1),
+  new Thing(Colour.Red, HexagoNumber.Number1),
+  new Thing(Colour.Red, HexagoNumber.Number1),
+  new Thing(Colour.Red, HexagoNumber.Number1)
 ]
 
 const card1 = new Card(card1Things)
