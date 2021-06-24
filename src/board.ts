@@ -46,15 +46,15 @@ export class Board {
 
   public findMatches(placedCard: PlacedCard): Match[] {
     return Board.neighbourData
-      .flatMap(([rowOffset, colOffset, thisSlot, otherSlot]) => {
+      .flatMap(([rowOffset, colOffset, thisWedgeIndex, otherWedgeIndex]) => {
         const otherRow = placedCard.row + rowOffset
         const otherCol = placedCard.col + colOffset
         const otherPlacedCard = this.placedCards.find(pc => pc.row == otherRow && pc.col == otherCol)
         const matches = []
         if (otherPlacedCard) {
-          const thing1 = placedCard.thingAt(thisSlot)
-          const thing2 = otherPlacedCard.thingAt(otherSlot)
-          matches.push(new Match(thing1, thing2))
+          const wedge1 = placedCard.wedgeAt(thisWedgeIndex)
+          const wedge2 = otherPlacedCard.wedgeAt(otherWedgeIndex)
+          matches.push(new Match(wedge1, wedge2))
         }
         return matches
       })

@@ -8,8 +8,4 @@ export class Cell {
   public equals(other: Cell) {
     return this.row == other.row && this.col == other.col
   }
-
-  public toString(): string {
-    return `(${this.row},${this.col})`
-  }
 }

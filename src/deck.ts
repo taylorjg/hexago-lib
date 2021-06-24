@@ -1,27 +1,27 @@
 import { Card } from './card'
 import { Colour, HexagoNumber } from './enums'
-import { CardThings, Thing } from './thing'
+import { CardWedges, Wedge } from './wedge'
 
-const card1Things: CardThings = [
-  new Thing(Colour.Red, HexagoNumber.Number1),
-  new Thing(Colour.Red, HexagoNumber.Number1),
-  new Thing(Colour.Red, HexagoNumber.Number1),
-  new Thing(Colour.Red, HexagoNumber.Number1),
-  new Thing(Colour.Red, HexagoNumber.Number1),
-  new Thing(Colour.Red, HexagoNumber.Number1)
+const card1Wedges: CardWedges = [
+  new Wedge(Colour.Red, HexagoNumber.Number1),
+  new Wedge(Colour.Red, HexagoNumber.Number1),
+  new Wedge(Colour.Red, HexagoNumber.Number1),
+  new Wedge(Colour.Red, HexagoNumber.Number1),
+  new Wedge(Colour.Red, HexagoNumber.Number1),
+  new Wedge(Colour.Red, HexagoNumber.Number1)
 ]
 
-const card2Things: CardThings = [
-  new Thing(Colour.Red, HexagoNumber.Number1),
-  new Thing(Colour.Red, HexagoNumber.Number1),
-  new Thing(Colour.Red, HexagoNumber.Number1),
-  new Thing(Colour.Red, HexagoNumber.Number1),
-  new Thing(Colour.Red, HexagoNumber.Number1),
-  new Thing(Colour.Red, HexagoNumber.Number1)
+const card2Wedges: CardWedges = [
+  new Wedge(Colour.Red, HexagoNumber.Number1),
+  new Wedge(Colour.Red, HexagoNumber.Number1),
+  new Wedge(Colour.Red, HexagoNumber.Number1),
+  new Wedge(Colour.Red, HexagoNumber.Number1),
+  new Wedge(Colour.Red, HexagoNumber.Number1),
+  new Wedge(Colour.Red, HexagoNumber.Number1)
 ]
 
-const card1 = new Card(card1Things)
-const card2 = new Card(card2Things)
+const card1 = new Card(card1Wedges)
+const card2 = new Card(card2Wedges)
 
 export class Deck {
 

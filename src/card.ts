@@ -1,19 +1,14 @@
 import { Rotation } from './enums'
-import { CardThings, Thing } from './thing'
+import { CardWedges, Wedge } from './wedge'
 
 export class Card {
 
-  public constructor(private readonly things: CardThings) {
+  public constructor(private readonly wedges: CardWedges) {
   }
 
-  public thingAt(slot: number, rotation: Rotation): Thing {
-    const numSlots = this.things.length
-    const index = (slot - rotation + numSlots) % numSlots
-    return this.things[index]
-  }
-
-  // TODO: finish implementing this
-  public toString(): string {
-    return '[Card] TODO'
+  public wedgeAt(wedgeIndex: number, rotation: Rotation): Wedge {
+    const numWedges = this.wedges.length
+    const wedgeIndexAfterRotation = (wedgeIndex - rotation + numWedges) % numWedges
+    return this.wedges[wedgeIndexAfterRotation]
   }
 }

@@ -1,6 +1,6 @@
 import { Card } from './card'
 import { Rotation } from './enums'
-import { Thing } from './thing'
+import { Wedge } from './wedge'
 
 export class PlacedCard {
 
@@ -11,12 +11,7 @@ export class PlacedCard {
     public readonly rotation: Rotation) {
   }
 
-  public thingAt(slot: number): Thing {
-    return this.card.thingAt(slot, this.rotation)
-  }
-
-  // TODO: finish implementing this
-  public toString(): string {
-    return '[PlacedCard] TODO'
+  public wedgeAt(wedgeIndex: number): Wedge {
+    return this.card.wedgeAt(wedgeIndex, this.rotation)
   }
 }
