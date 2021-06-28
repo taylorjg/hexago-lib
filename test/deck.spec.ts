@@ -60,5 +60,41 @@ describe('Deck tests', () => {
       expect(numFive).toBe(36)
       expect(numSix).toBe(36)
     })
+
+    it('every card has one repeated colour', () => {
+      for (const card of Deck.originalCards) {
+        const colours = new Set<Colour>()
+        for (const wedgeIndex of [0, 1, 2, 3, 4, 5]) {
+          const wedge = card.wedgeAt(wedgeIndex, Rotation.Rotation0)
+          colours.add(wedge.colour)
+        }
+        expect(colours.size).toBe(5)
+      }
+    })
+
+    it('every card has one repeated number', () => {
+      for (const card of Deck.originalCards) {
+        const numbers = new Set<HexagoNumber>()
+        for (const wedgeIndex of [0, 1, 2, 3, 4, 5]) {
+          const wedge = card.wedgeAt(wedgeIndex, Rotation.Rotation0)
+          numbers.add(wedge.number)
+        }
+        expect(numbers.size).toBe(5)
+      }
+    })
+
+    it('every card has a 1 and a 6', () => {
+      for (const card of Deck.originalCards) {
+        let hasOne = false
+        let hasSix = false
+        for (const wedgeIndex of [0, 1, 2, 3, 4, 5]) {
+          const wedge = card.wedgeAt(wedgeIndex, Rotation.Rotation0)
+          if (wedge.number == 1) hasOne = true
+          if (wedge.number == 6) hasSix = true
+        }
+        expect(hasOne).toBe(true)
+        expect(hasSix).toBe(true)
+      }
+    })
   })
 })
