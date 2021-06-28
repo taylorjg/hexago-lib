@@ -1,88 +1,24 @@
 import { Card } from '../src/card'
-import { Colour, HexagoNumber, Rotation } from '../src/enums'
-import { CardWedges, Wedge } from '../src/wedge'
+import { Rotation } from '../src/enums'
 import { PlacedCard } from '../src/placedCard'
 
-export const cardWedgesA: CardWedges = [
-  new Wedge(Colour.Green, HexagoNumber.Number5),
-  new Wedge(Colour.Yellow, HexagoNumber.Number6),
-  new Wedge(Colour.Green, HexagoNumber.Number3),
-  new Wedge(Colour.Red, HexagoNumber.Number2),
-  new Wedge(Colour.Orange, HexagoNumber.Number1),
-  new Wedge(Colour.Blue, HexagoNumber.Number2)
-]
-
-export const cardA = new Card(cardWedgesA)
+export const cardA = Card.fromString('G5-Y6-G3-R2-O1-B2')
 export const placedCardA = new PlacedCard(cardA, 0, 0, Rotation.Rotation0)
 
-export const cardWedgesB: CardWedges = [
-  new Wedge(Colour.Green, HexagoNumber.Number1),
-  new Wedge(Colour.Yellow, HexagoNumber.Number4),
-  new Wedge(Colour.Red, HexagoNumber.Number3),
-  new Wedge(Colour.Blue, HexagoNumber.Number5),
-  new Wedge(Colour.Red, HexagoNumber.Number6),
-  new Wedge(Colour.Orange, HexagoNumber.Number3)
-]
-
-export const cardB = new Card(cardWedgesB)
+export const cardB = Card.fromString('G1-Y4-R3-B5-R6-O3')
 export const placedCardB = new PlacedCard(cardB, 0, 2, Rotation.Rotation0)
 
-export const cardWedgesC: CardWedges = [
-  new Wedge(Colour.Blue, HexagoNumber.Number6),
-  new Wedge(Colour.Orange, HexagoNumber.Number2),
-  new Wedge(Colour.Green, HexagoNumber.Number5),
-  new Wedge(Colour.Red, HexagoNumber.Number1),
-  new Wedge(Colour.Yellow, HexagoNumber.Number5),
-  new Wedge(Colour.Red, HexagoNumber.Number3)
-]
-
-export const cardC = new Card(cardWedgesC)
+export const cardC = Card.fromString('B6-O2-G5-R1-Y5-R3')
 export const placedCardC = new PlacedCard(cardC, 1, 1, Rotation.Rotation0)
 
-export const cardWedgesD: CardWedges = [
-  new Wedge(Colour.Red, HexagoNumber.Number4),
-  new Wedge(Colour.Yellow, HexagoNumber.Number5),
-  new Wedge(Colour.Blue, HexagoNumber.Number6),
-  new Wedge(Colour.Purple, HexagoNumber.Number4),
-  new Wedge(Colour.Green, HexagoNumber.Number2),
-  new Wedge(Colour.Purple, HexagoNumber.Number1)
-]
-
-export const cardD = new Card(cardWedgesD)
+export const cardD = Card.fromString('R4-Y5-B6-P4-G2-P1')
 export const placedCardD = new PlacedCard(cardD, 1, -1, Rotation.Rotation0)
 
-export const cardWedgesE: CardWedges = [
-  new Wedge(Colour.Purple, HexagoNumber.Number4),
-  new Wedge(Colour.Blue, HexagoNumber.Number5),
-  new Wedge(Colour.Yellow, HexagoNumber.Number6),
-  new Wedge(Colour.Green, HexagoNumber.Number4),
-  new Wedge(Colour.Purple, HexagoNumber.Number3),
-  new Wedge(Colour.Orange, HexagoNumber.Number1)
-]
-
-export const cardE = new Card(cardWedgesE)
+export const cardE = Card.fromString('P4-B5-Y6-G4-P3-O1')
 export const placedCardE = new PlacedCard(cardE, 2, -2, Rotation.Rotation0)
 
-export const cardWedgesF: CardWedges = [
-  new Wedge(Colour.Red, HexagoNumber.Number6),
-  new Wedge(Colour.Blue, HexagoNumber.Number5),
-  new Wedge(Colour.Purple, HexagoNumber.Number2),
-  new Wedge(Colour.Green, HexagoNumber.Number1),
-  new Wedge(Colour.Yellow, HexagoNumber.Number5),
-  new Wedge(Colour.Blue, HexagoNumber.Number4)
-]
-
-export const cardF = new Card(cardWedgesF)
+export const cardF = Card.fromString('R6-B5-P2-G1-Y5-B4')
 export const placedCardF = new PlacedCard(cardF, 2, 0, Rotation.Rotation0)
 
-export const cardWedgesG: CardWedges = [
-  new Wedge(Colour.Purple, HexagoNumber.Number3),
-  new Wedge(Colour.Red, HexagoNumber.Number1),
-  new Wedge(Colour.Yellow, HexagoNumber.Number3),
-  new Wedge(Colour.Orange, HexagoNumber.Number2),
-  new Wedge(Colour.Yellow, HexagoNumber.Number6),
-  new Wedge(Colour.Green, HexagoNumber.Number5)
-]
-
-export const cardG = new Card(cardWedgesG)
+export const cardG = Card.fromString('P3-R1-Y3-O2-Y6-G5')
 export const placedCardG = new PlacedCard(cardG, 2, 2, Rotation.Rotation0)
