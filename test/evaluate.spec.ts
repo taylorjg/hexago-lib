@@ -1,6 +1,6 @@
 import { Board } from '../src/board'
 import { Rotation } from '../src/enums'
-import { evaluatePlacedCard } from '../src/evaluate'
+import { evaluateCard, evaluatePlacedCard } from '../src/evaluate'
 import { PlacedCard } from '../src/placedCard'
 import * as E from './exampleCards'
 
@@ -69,6 +69,23 @@ describe('Evaluate tests', () => {
       const placedCardGBetter = new PlacedCard(E.cardG, 3, -1, Rotation.Rotation60)
       const possibleMove = evaluatePlacedCard(board, placedCardGBetter)
       expect(possibleMove.score).toBe(60)
+    })
+  })
+
+  describe('evaluateCard', () => {
+    it('first possible move is the best move', () => {
+      const board = Board.empty
+        .placeCard(E.placedCardA)
+        .placeCard(E.placedCardB)
+        .placeCard(E.placedCardC)
+        .placeCard(E.placedCardD)
+        .placeCard(E.placedCardE)
+        .placeCard(E.placedCardF)
+      const possibleMoves = evaluateCard(board, E.cardG)
+      expect(possibleMoves[0].score).toBe(60)
+      expect(possibleMoves[0].placedCard.row).toBe(3)
+      expect(possibleMoves[0].placedCard.col).toBe(-1)
+      expect(possibleMoves[0].placedCard.rotation).toBe(Rotation.Rotation60)
     })
   })
 })
