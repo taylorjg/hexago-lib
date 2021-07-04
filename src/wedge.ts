@@ -8,6 +8,13 @@ export class Wedge {
   ) {
   }
 
+  public equals(other: Wedge) {
+    return (
+      this.colour == other.colour &&
+      this.number == other.number
+    )
+  }
+
   public static fromString(s: string): Wedge {
     const colour = Wedge.stringToColour(s[0])
     const number = Wedge.stringToNumber(s[1])

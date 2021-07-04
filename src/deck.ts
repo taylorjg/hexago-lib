@@ -1,4 +1,5 @@
 import { Card } from './card'
+import { Rotation } from './enums'
 
 const cardStrings = [
   'G1-P5-O6-P2-R3-B2',
@@ -42,4 +43,30 @@ const cardStrings = [
 export class Deck {
 
   public static readonly originalCards: readonly Card[] = cardStrings.map(Card.fromString)
+
+  public static findCard(s: string): [Card, Rotation] {
+    const tempCard = Card.fromString(s)
+    const rotations = [
+      Rotation.Rotation0,
+      Rotation.Rotation60,
+      Rotation.Rotation120,
+      Rotation.Rotation180,
+      Rotation.Rotation240,
+      Rotation.Rotation300
+    ]
+    for (const rotation of rotations) {
+      const maybeCard = Deck.findCardInternal(tempCard, rotation)
+      if (maybeCard) {
+        return [maybeCard, rotation]
+      }
+    }
+    throw new Error('[Deck.findCard] card not found')
+  }
+
+  private static findCardInternal(tempCard: Card, rotation: Rotation): Card | undefined {
+    return Deck.originalCards.find(card =>
+      [0, 1, 2, 3, 4, 5].every(wedgeIndex =>
+        card.wedgeAt(wedgeIndex, rotation).equals(tempCard.wedgeAt(wedgeIndex, Rotation.Rotation0))
+      ))
+  }
 }
