@@ -16,5 +16,8 @@
     "babel-jest": "^27.0.2",
     "jest": "^27.0.4",
     "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "array-shuffle": "^2.0.0"
   }
 }

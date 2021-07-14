@@ -1,3 +1,4 @@
+import arrayShuffle from 'array-shuffle'
 import { Card } from './card'
 import { Rotation } from './enums'
 
@@ -43,6 +44,28 @@ const cardStrings = [
 export class Deck {
 
   public static readonly originalCards: readonly Card[] = cardStrings.map(Card.fromString)
+
+  private cards: Card[]
+
+  constructor() {
+    this.cards = arrayShuffle(Deck.originalCards)
+  }
+
+  public reset(): void {
+    this.cards = arrayShuffle(Deck.originalCards)
+  }
+
+  public nextCard(): Card {
+    const maybeCard = this.cards.shift()
+    if (!maybeCard) {
+      throw new Error('[Deck#nextCard] deck is empty')
+    }
+    return maybeCard
+  }
+
+  public get numCardsLeft() {
+    return this.cards.length
+  }
 
   public static findCard(s: string): [Card, Rotation] {
     const tempCard = Card.fromString(s)
