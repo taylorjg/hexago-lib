@@ -1,4 +1,4 @@
-import { Wedge } from './wedge'
+import { PlacedCard } from './placedCard'
 
 export class Match {
 
@@ -6,19 +6,18 @@ export class Match {
   public readonly numbersMatch: boolean
   public readonly score: number
 
-  // TODO: introduce a new class to bundle a wedge, wedgeIndex and placedCard together ?
   public constructor(
-    public readonly wedge1: Wedge,
-    public readonly wedge2: Wedge
+    public readonly placedCard: PlacedCard,
+    public readonly wedgeIndex: number,
+    public readonly otherPlacedCard: PlacedCard,
+    public readonly otherWedgeIndex: number,
   ) {
-    this.coloursMatch = this.wedge1.colour == this.wedge2.colour
-    this.numbersMatch = this.wedge1.number == this.wedge2.number
-    if (!this.coloursMatch && !this.numbersMatch) {
-      this.score = 0
-    } else {
-      const sum = this.wedge1.number + this.wedge2.number
-      const double = this.coloursMatch && this.numbersMatch
-      this.score = double ? 2 * sum : sum
-    }
+    const wedge = this.placedCard.wedgeAt(this.wedgeIndex)
+    const otherWedge = this.otherPlacedCard.wedgeAt(this.otherWedgeIndex)
+    this.coloursMatch = wedge.colour == otherWedge.colour
+    this.numbersMatch = wedge.number == otherWedge.number
+    const sum = wedge.number + otherWedge.number
+    const multiplier = (this.coloursMatch ? 1 : 0) + (this.numbersMatch ? 1 : 0)
+    this.score = sum * multiplier
   }
 }

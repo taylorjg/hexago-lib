@@ -1,54 +1,33 @@
-import { Card } from '../src/card'
-import { Colour, HexagoNumber, Rotation } from '../src/enums'
 import { Match } from '../src/match'
 import { PossibleMove } from '../src/possibleMove'
-import { CardWedges, Wedge } from '../src/wedge'
-import { PlacedCard } from '../src/placedCard'
-
-const cardWedges: CardWedges = [
-  new Wedge(Colour.Green, HexagoNumber.Number5),
-  new Wedge(Colour.Yellow, HexagoNumber.Number6),
-  new Wedge(Colour.Green, HexagoNumber.Number3),
-  new Wedge(Colour.Red, HexagoNumber.Number2),
-  new Wedge(Colour.Orange, HexagoNumber.Number1),
-  new Wedge(Colour.Blue, HexagoNumber.Number2)
-]
-
-const card = new Card(cardWedges)
-const placedCard = new PlacedCard(card, 0, 0, Rotation.Rotation0)
+import * as E from './exampleCards'
 
 describe('PossibleMove tests', () => {
 
   it('1 match', () => {
-    const wedge1 = new Wedge(Colour.Red, HexagoNumber.Number2)
-    const wedge2 = new Wedge(Colour.Red, HexagoNumber.Number6)
-    const match = new Match(wedge1, wedge2)
-    const possibleMove = new PossibleMove(placedCard, [match])
-    expect(possibleMove.score).toBe(match.score)
+    // Card A Y6 at wedge index 1 and Card B R6 at wedge index 4
+    const match1 = new Match(E.placedCardA, 1, E.placedCardB, 4)
+    const possibleMove = new PossibleMove(E.placedCardA, [match1])
+    expect(possibleMove.score).toBe(match1.score)
   })
 
   it('2 matches', () => {
-    const wedge1 = new Wedge(Colour.Red, HexagoNumber.Number2)
-    const wedge2 = new Wedge(Colour.Red, HexagoNumber.Number6)
-    const match1 = new Match(wedge1, wedge2)
-    const wedge3 = new Wedge(Colour.Green, HexagoNumber.Number3)
-    const wedge4 = new Wedge(Colour.Yellow, HexagoNumber.Number3)
-    const match2 = new Match(wedge3, wedge4)
-    const possibleMove = new PossibleMove(placedCard, [match1, match2])
+    // Card D R4 at wedge index 0 and Card A R2 at wedge index 3
+    const match1 = new Match(E.placedCardD, 0, E.placedCardA, 3)
+    // Card D Y5 at wedge index 1 and Card C Y5 at wedge index 4
+    const match2 = new Match(E.placedCardD, 1, E.placedCardC, 4)
+    const possibleMove = new PossibleMove(E.placedCardD, [match1, match2])
     expect(possibleMove.score).toBe((match1.score + match2.score) * 2)
   })
 
-  it('3 matches', () => {
-    const wedge1 = new Wedge(Colour.Red, HexagoNumber.Number2)
-    const wedge2 = new Wedge(Colour.Red, HexagoNumber.Number6)
-    const match1 = new Match(wedge1, wedge2)
-    const wedge3 = new Wedge(Colour.Green, HexagoNumber.Number3)
-    const wedge4 = new Wedge(Colour.Yellow, HexagoNumber.Number3)
-    const match2 = new Match(wedge3, wedge4)
-    const wedge5 = new Wedge(Colour.Yellow, HexagoNumber.Number6)
-    const wedge6 = new Wedge(Colour.Yellow, HexagoNumber.Number6)
-    const match3 = new Match(wedge5, wedge6)
-    const possibleMove = new PossibleMove(placedCard, [match1, match2, match3])
+  it('2 matches', () => {
+    // Card F Y5 at wedge index 4 and Card E B5 at wedge index 1
+    const match1 = new Match(E.placedCardF, 4, E.placedCardE, 1)
+    // Card F B4 at wedge index 5 and Card D B6 at wedge index 2
+    const match2 = new Match(E.placedCardF, 5, E.placedCardD, 2)
+    // Card F R6 at wedge index 0 and Card C R1 at wedge index 3
+    const match3 = new Match(E.placedCardF, 0, E.placedCardC, 3)
+    const possibleMove = new PossibleMove(E.placedCardF, [match1, match2, match3])
     expect(possibleMove.score).toBe((match1.score + match2.score + match3.score) * 3)
   })
 })

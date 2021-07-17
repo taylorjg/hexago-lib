@@ -1,34 +1,29 @@
-import { Colour, HexagoNumber } from '../src/enums'
 import { Match } from '../src/match'
-import { Wedge } from '../src/wedge'
+import * as E from './exampleCards'
 
 describe('Match tests', () => {
 
   it('nothing matching', () => {
-    const wedge1 = new Wedge(Colour.Red, HexagoNumber.Number2)
-    const wedge2 = new Wedge(Colour.Blue, HexagoNumber.Number4)
-    const match = new Match(wedge1, wedge2)
+    // Card F B5 at wedge index 1 and Card G Y6 at wedge index 4
+    const match = new Match(E.placedCardF, 1, E.placedCardG, 4)
     expect(match.score).toBe(0)
   })
 
   it('matching colours', () => {
-    const wedge1 = new Wedge(Colour.Red, HexagoNumber.Number1)
-    const wedge2 = new Wedge(Colour.Red, HexagoNumber.Number6)
-    const match = new Match(wedge1, wedge2)
-    expect(match.score).toBe(1 + 6)
+    // Card F B4 at wedge index 5 and Card D B6 at wedge index 2
+    const match = new Match(E.placedCardF, 5, E.placedCardD, 2)
+    expect(match.score).toBe(4 + 6)
   })
 
   it('matching numbers', () => {
-    const wedge1 = new Wedge(Colour.Red, HexagoNumber.Number3)
-    const wedge2 = new Wedge(Colour.Yellow, HexagoNumber.Number3)
-    const match = new Match(wedge1, wedge2)
+    // Card C R3 at wedge index 5 and Card A G3 at wedge index 2
+    const match = new Match(E.placedCardC, 5, E.placedCardA, 2)
     expect(match.score).toBe(3 + 3)
   })
 
   it('matching colours and numbers', () => {
-    const wedge1 = new Wedge(Colour.Orange, HexagoNumber.Number4)
-    const wedge2 = new Wedge(Colour.Orange, HexagoNumber.Number4)
-    const match = new Match(wedge1, wedge2)
+    // Card E P4 at wedge index 0 and Card D P4 at wedge index 3
+    const match = new Match(E.placedCardE, 0, E.placedCardD, 3)
     expect(match.score).toBe((4 + 4) * 2)
   })
 })
