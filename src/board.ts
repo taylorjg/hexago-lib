@@ -4,13 +4,13 @@ import { PlacedCard } from './placedCard'
 
 export class Board {
 
-  private static neighbourData: [number, number, number, number][] = [
-    [-1, 1, 0, 3],
-    [0, 2, 1, 4,],
-    [1, 1, 2, 5,],
-    [1, -1, 3, 0],
-    [0, -2, 4, 1],
-    [-1, -1, 5, 2]
+  private static neighbourData = [
+    { wedgeIndex: 0, rowOffset: -1, colOffset: 1 },
+    { wedgeIndex: 1, rowOffset: 0, colOffset: 2 },
+    { wedgeIndex: 2, rowOffset: 1, colOffset: 1 },
+    { wedgeIndex: 3, rowOffset: 1, colOffset: -1 },
+    { wedgeIndex: 4, rowOffset: 0, colOffset: -2 },
+    { wedgeIndex: 5, rowOffset: -1, colOffset: -1 }
   ]
 
   public static readonly empty: Board = new Board([])
@@ -32,7 +32,7 @@ export class Board {
   public findAvailableCardPositions(): Cell[] {
     if (this.placedCards.length == 0) return [new Cell(0, 0)]
     return this.placedCards.flatMap(placedCard => {
-      return Board.neighbourData.flatMap(([rowOffset, colOffset]) => {
+      return Board.neighbourData.flatMap(({ rowOffset, colOffset }) => {
         const proposedRow = placedCard.row + rowOffset
         const proposedCol = placedCard.col + colOffset
         const cells = []
@@ -46,12 +46,13 @@ export class Board {
 
   public findMatches(placedCard: PlacedCard): Match[] {
     return Board.neighbourData
-      .flatMap(([rowOffset, colOffset, wedgeIndex, otherWedgeIndex]) => {
+      .flatMap(({ wedgeIndex, rowOffset, colOffset }) => {
         const otherRow = placedCard.row + rowOffset
         const otherCol = placedCard.col + colOffset
         const otherPlacedCard = this.placedCards.find(pc => pc.row == otherRow && pc.col == otherCol)
         const matches = []
         if (otherPlacedCard) {
+          const otherWedgeIndex = (wedgeIndex + 3) % 6
           matches.push(new Match(placedCard, wedgeIndex, otherPlacedCard, otherWedgeIndex))
         }
         return matches
