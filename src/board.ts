@@ -31,17 +31,22 @@ export class Board {
 
   public findAvailableCardPositions(): Cell[] {
     if (this.placedCards.length == 0) return [new Cell(0, 0)]
-    return this.placedCards.flatMap(placedCard => {
-      return Board.neighbourData.flatMap(({ rowOffset, colOffset }) => {
+    const availableCardPositions: Cell[] = []
+    const addAvailableCardPosition = (row: number, col: number): void => {
+      const cell = new Cell(row, col)
+      const index = availableCardPositions.findIndex(availableCardPosition => availableCardPosition.equals(cell))
+      if (index < 0) {
+        availableCardPositions.push(cell)
+      }
+    }
+    for (const placedCard of this.placedCards) {
+      for (const { rowOffset, colOffset } of Board.neighbourData) {
         const proposedRow = placedCard.row + rowOffset
         const proposedCol = placedCard.col + colOffset
-        const cells = []
-        if (this.canPlaceCardAt(proposedRow, proposedCol)) {
-          cells.push(new Cell(proposedRow, proposedCol))
-        }
-        return cells
-      })
-    })
+        addAvailableCardPosition(proposedRow, proposedCol)
+      }
+    }
+    return availableCardPositions.filter(cell => this.canPlaceCardAt(cell.row, cell.col))
   }
 
   public findMatches(placedCard: PlacedCard): Match[] {

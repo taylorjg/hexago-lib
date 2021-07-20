@@ -23,7 +23,7 @@ describe('Board tests', () => {
         .placeCard(E.placedCardA)
         .placeCard(E.placedCardB)
       const availableCardPositions = board.findAvailableCardPositions()
-      expect(availableCardPositions).toHaveLength(10)
+      expect(availableCardPositions).toHaveLength(8)
     })
   })
 })
