@@ -2,6 +2,13 @@ import { Cell } from './cell'
 import { Match } from './match'
 import { PlacedCard } from './placedCard'
 
+export type BoardBounds = {
+  left: number,
+  right: number,
+  top: number,
+  bottom: number
+}
+
 export class Board {
 
   private static neighbourData = [
@@ -65,27 +72,13 @@ export class Board {
       .filter(match => match.score > 0)
   }
 
-  public getBoundaries(): [number, number, number, number] {
-    let leftMostCol
-    let rightMostCol
-    let topMostRow
-    let bottomMostRow
-    for (const placedCard of this.placedCards) {
-      const row = placedCard.row
-      const col = placedCard.col
-      if (leftMostCol == undefined || col < leftMostCol) {
-        leftMostCol = col
-      }
-      if (rightMostCol == undefined || col > rightMostCol) {
-        rightMostCol = col
-      }
-      if (topMostRow == undefined || row < topMostRow) {
-        topMostRow = row
-      }
-      if (bottomMostRow == undefined || row > bottomMostRow) {
-        bottomMostRow = row
-      }
-    }
-    return [leftMostCol ?? 0, rightMostCol ?? 0, topMostRow ?? 0, bottomMostRow ?? 0]
+  public getBounds(): BoardBounds {
+    const rows = this.placedCards.map(placedCard => placedCard.row)
+    const cols = this.placedCards.map(placedCard => placedCard.col)
+    const left = Math.min(0, ...cols)
+    const right = Math.max(0, ...cols)
+    const top = Math.min(0, ...rows)
+    const bottom = Math.max(0, ...rows)
+    return { left, right, top, bottom }
   }
 }
