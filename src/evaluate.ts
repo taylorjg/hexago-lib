@@ -1,6 +1,6 @@
 import { Board } from './board'
 import { Card } from './card'
-import { Rotation } from './enums'
+import { allRotations } from './enums'
 import { PlacedCard } from './placedCard'
 import { PossibleMove } from './possibleMove'
 
@@ -11,19 +11,9 @@ export const evaluatePlacedCard = (board: Board, placedCard: PlacedCard): Possib
 }
 
 export const evaluateCard = (board: Board, card: Card): PossibleMove[] => {
-
-  const rotations = [
-    Rotation.Rotation0,
-    Rotation.Rotation60,
-    Rotation.Rotation120,
-    Rotation.Rotation180,
-    Rotation.Rotation240,
-    Rotation.Rotation300
-  ]
-
   const availableCardPositions = board.findAvailableCardPositions()
   const possibleMoves = availableCardPositions.flatMap(cell =>
-    rotations.map(rotation => {
+    allRotations.map(rotation => {
       const placedCard = new PlacedCard(card, cell.row, cell.col, rotation)
       const possibleMove = evaluatePlacedCard(board, placedCard)
       return possibleMove
