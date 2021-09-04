@@ -1,5 +1,4 @@
-import { Deck } from '../src/deck'
-import { Colour, HexagoNumber, Rotation } from '../src/enums'
+import { Colour, Deck, HexagoNumber, Rotation } from '../src'
 
 describe('Deck tests', () => {
 

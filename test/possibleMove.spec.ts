@@ -1,5 +1,4 @@
-import { Match } from '../src/match'
-import { PossibleMove } from '../src/possibleMove'
+import { Match, PossibleMove } from '../src'
 import * as E from './exampleCards'
 
 describe('PossibleMove tests', () => {

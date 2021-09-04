@@ -8,7 +8,8 @@ export class PlacedCard {
     public readonly card: Card,
     public readonly row: number,
     public readonly col: number,
-    public readonly rotation: Rotation) {
+    public readonly rotation: Rotation
+  ) {
   }
 
   public wedgeAt(wedgeIndex: number): Wedge {

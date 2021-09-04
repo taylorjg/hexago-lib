@@ -1,7 +1,10 @@
-import { Board } from '../src/board'
-import { Rotation } from '../src/enums'
-import { evaluateCard, evaluatePlacedCard } from '../src/evaluate'
-import { PlacedCard } from '../src/placedCard'
+import {
+  Board,
+  Rotation,
+  PlacedCard,
+  evaluateCard,
+  evaluatePlacedCard
+} from '../src'
 import * as E from './exampleCards'
 
 describe('Evaluate tests', () => {

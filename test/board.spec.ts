@@ -1,5 +1,4 @@
-import { Board } from "../src/board"
-import { Cell } from "../src/cell"
+import { Board, Cell } from '../src'
 import * as E from './exampleCards'
 
 describe('Board tests', () => {

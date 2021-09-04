@@ -1,6 +1,4 @@
-import { Card } from '../src/card'
-import { Rotation } from '../src/enums'
-import { PlacedCard } from '../src/placedCard'
+import { Card, PlacedCard, Rotation } from '../src'
 
 export const cardA = Card.fromString('G5-Y6-G3-R2-O1-B2')
 export const cardB = Card.fromString('G1-Y4-R3-B5-R6-O3')
